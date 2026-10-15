@@ -117,3 +117,16 @@ CREATE TABLE Payment(
         FOREIGN KEY (order_id)
         REFERENCES Orders(order_id)
 );
+
+-- ============================================
+-- Verifying the tables in our schema
+-- ============================================
+
+SHOW TABLES;
+
+SELECT
+    table_name,
+    row_count
+FROM INFORMATION_SCHEMA.TABLES
+WHERE table_schema = 'ECOMMERCE'
+ORDER BY table_name;
