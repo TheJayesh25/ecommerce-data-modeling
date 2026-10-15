@@ -1,3 +1,14 @@
+-- ============================================
+-- E-commerce Data Modeling
+-- Row Counts Tests
+-- ============================================
+
+
+USE ROLE ACCOUNTADMIN;
+USE WAREHOUSE COMPUTE_WH;
+USE DATABASE ECOMMERCE_DB;
+USE SCHEMA ECOMMERCE;
+
 SELECT
     'CUSTOMER' AS table_name,
     COUNT(*) AS actual_count,
