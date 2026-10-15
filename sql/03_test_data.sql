@@ -8,6 +8,17 @@ USE WAREHOUSE COMPUTE_WH;
 USE DATABASE ECOMMERCE_DB;
 USE SCHEMA ECOMMERCE;
 
+-- ============================================
+-- Reset existing test data
+-- ============================================
+
+TRUNCATE TABLE Payment;
+TRUNCATE TABLE OrderItem;
+TRUNCATE TABLE Orders;
+TRUNCATE TABLE Address;
+TRUNCATE TABLE Product;
+TRUNCATE TABLE Category;
+TRUNCATE TABLE Customer;
 
 -- ============================================
 -- 1. Customer
@@ -15,7 +26,6 @@ USE SCHEMA ECOMMERCE;
 
 -- Insert customer test data here
 
-TRUNCATE TABLE IF EXISTS Customer;
 INSERT INTO Customer (
     customer_id,
     name,
@@ -29,8 +39,6 @@ VALUES
     ('C103', 'Rohan Kapoor', '2001-01-18', '+91-90000-10103', 'rohan.kapoor@example.com'),
     ('C104', 'Neha Iyer', '1999-07-05', '+91-90000-10104', 'neha.iyer@example.com');
 
-SELECT * FROM Customer;
-
 
 -- ============================================
 -- 2. Category
@@ -38,7 +46,6 @@ SELECT * FROM Customer;
 
 -- Insert category test data here
 
-TRUNCATE TABLE IF EXISTS Category;
 INSERT INTO Category (
     category_id,
     name
@@ -50,15 +57,12 @@ VALUES
     ('CAT04', 'Fitness'),
     ('CAT05', 'Pet Supplies');
 
-SELECT * FROM Category;
-
 -- ============================================
 -- 3. Product
 -- ============================================
 
 -- Insert product test data here
 
-TRUNCATE TABLE IF EXISTS Product;
 INSERT INTO Product (
     product_id,
     name,
@@ -75,15 +79,12 @@ VALUES
     ('P105', 'Yoga Mat', 'Non-slip exercise mat', 799.00, 'CAT04', 'active'),
     ('P106', 'Wired Headphones', 'Over-ear wired headphones', 1599.00, 'CAT01', 'inactive');
 
-SELECT * FROM Product;
-
 -- ============================================
 -- 4. Address
 -- ============================================
 
 -- Insert address test data here
 
-TRUNCATE TABLE IF EXISTS Address;
 INSERT INTO Address (
     address_id,
     customer_id,
@@ -103,15 +104,12 @@ VALUES
     ('A105', 'C103', 'OTHER', '17 Market Street', 'Thane East', '400603', 'Thane', 'Maharashtra', 'India'),
     ('A106', 'C104', 'HOME', '33 Sunrise Lane', 'Vashi', '400703', 'Navi Mumbai', 'Maharashtra', 'India');
 
-SELECT * FROM Address;    
-
 -- ============================================
 -- 5. Orders
 -- ============================================
 
 -- Insert order test data here
 
-TRUNCATE TABLE IF EXISTS Orders;
 INSERT INTO Orders (
     order_id,
     customer_id, 
@@ -128,15 +126,12 @@ VALUES
     ('O104', 'C103', 'A104', '2026-10-12', NULL, NULL, 'PLACED'),
     ('O105', 'C103', 'A105', '2026-10-13', NULL, NULL, 'CANCELLED');
 
-SELECT * FROM Orders;
-
 -- ============================================
 -- 6. OrderItem
 -- ============================================
 
 -- Insert order item test data here
 
-TRUNCATE TABLE IF EXISTS OrderItem;
 INSERT INTO OrderItem (
     order_id,
     product_id,
@@ -154,15 +149,12 @@ VALUES
     ('O105', 'P101', 1, 1299.00),
     ('O105', 'P104', 1, 849.00);
 
-SELECT * FROM OrderItem;
-
 -- ============================================
 -- 7. Payment
 -- ============================================
 
 -- Insert payment test data here
 
-TRUNCATE TABLE IF EXISTS Payment;
 INSERT INTO Payment (
     payment_id,	
     order_id,	
@@ -176,5 +168,3 @@ VALUES
     ('PAY103', 'O102', 7198.00, 'successful', 'upi'),
     ('PAY104', 'O103', 5297.00, 'successful', 'card'),
     ('PAY105', 'O105', 2148.00, 'failed', 'card');
-
-SELECT * FROM Payment;
