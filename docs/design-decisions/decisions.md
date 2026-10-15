@@ -86,3 +86,5 @@ The model intentionally does not cover:
 - Advanced address history/versioning
 
 These can be introduced in future iterations if the business requirements require them.
+
+> Snowflake constraint enforcement: The logical model defines PK/FK/UNIQUE constraints for relational integrity, but Snowflake standard tables do not enforce PK, UNIQUE, or FK constraints. Therefore, cross-table and uniqueness rules are additionally validated through explicit data-quality tests.
